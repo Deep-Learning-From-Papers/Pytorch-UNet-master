@@ -1,28 +1,27 @@
 @echo off
 setlocal enabledelayedexpansion
 
-if not exist "%userprofile%\.kaggle\kaggle.json" (
-  set /p USERNAME=Kaggle username: 
-  echo.
-  set /p APIKEY=Kaggle API key: 
+echo ==========================================
+echo Brain Tumor Dataset Setup
+echo ==========================================
 
-  mkdir "%userprofile%\.kaggle"
-  echo {"username":"!USERNAME!","key":"!APIKEY!"} > "%userprofile%\.kaggle\kaggle.json"
-  attrib +R "%userprofile%\.kaggle\kaggle.json"
-)
+REM Install required packages
+pip install kagglehub pycocotools pillow numpy --upgrade
 
-pip install kaggle --upgrade
+REM Create dataset folders
+mkdir brain_tumor_unet\train\imgs
+mkdir brain_tumor_unet\train\masks
+mkdir brain_tumor_unet\valid\imgs
+mkdir brain_tumor_unet\valid\masks
+mkdir brain_tumor_unet\test\imgs
+mkdir brain_tumor_unet\test\masks
 
-kaggle competitions download -c carvana-image-masking-challenge -f train_hq.zip
-powershell Expand-Archive train_hq.zip -DestinationPath data\imgs
-move data\imgs\train_hq\* data\imgs\
-rmdir /s /q data\imgs\train_hq
-del /q train_hq.zip
+REM Run Python conversion script
+python dataset\coco_to_mask.py
 
-kaggle competitions download -c carvana-image-masking-challenge -f train_masks.zip
-powershell Expand-Archive train_masks.zip -DestinationPath data\masks
-move data\masks\train_masks\* data\masks\
-rmdir /s /q data\masks\train_masks
-del /q train_masks.zip
-
-exit /b 0
+echo.
+echo Dataset conversion finished.
+echo Output folder:
+echo brain_tumor_unet\
+echo.
+pause
