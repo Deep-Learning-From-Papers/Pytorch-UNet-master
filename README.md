@@ -177,5 +177,6 @@ figures/
 This project is based on the excellent open-source implementation:
 
 https://github.com/milesial/Pytorch-UNet
+Paper :Ronneberger, O., Fischer, P., Brox, T. (2015). U-Net: Convolutional Networks for Biomedical Image Segmentation. In: Navab, N., Hornegger, J., Wells, W., Frangi, A. (eds) Medical Image Computing and Computer-Assisted Intervention – MICCAI 2015. MICCAI 2015. Lecture Notes in Computer Science(), vol 9351. Springer, Cham. https://doi.org/10.1007/978-3-319-24574-4_28
 
 The purpose of this repository is educational and research-oriented. During this project, the original implementation will be carefully studied, progressively modified, and eventually replaced with my own implementation while documenting every experiment and design decision.
