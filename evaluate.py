@@ -65,4 +65,4 @@ def evaluate(net, dataloader, device, amp):
         for key, value in avg_metrics.items():
             print(f"{key}: {value:.4f}")
 
-    return avg_dice
+    return avg_dice, avg_metrics
