@@ -1,100 +1,99 @@
 # U-Net From Paper
 
-> A research-oriented implementation and study of the original U-Net architecture for medical image segmentation.
+> A research-oriented implementation and analysis of the original U-Net architecture for biomedical image segmentation.
 
 ---
 
 # U-Net Architecture
 
 <p align="center">
-  <img src="figures/unet_architecture.png" width="850">
+  <img src="figures/unet_architecture.png" width="900">
 </p>
 
-**Original U-Net architecture proposed by Ronneberger et al. (MICCAI 2015).**
+The original U-Net architecture proposed by Ronneberger et al. (MICCAI 2015).
 
-The network consists of:
+---
 
-- Contracting (Encoder) path
-- Bottleneck
-- Expanding (Decoder) path
-- Skip Connections
-- Pixel-wise segmentation output
+# Dataset Example
 
-This repository explains every component of the architecture and reproduces the original implementation before performing systematic experiments and improvements.
+The project uses the **Brain Tumor Semantic Segmentation Dataset**.
+
+Each sample consists of:
+
+- an MRI image
+- a corresponding binary segmentation mask
+
+<p align="center">
+  <img src="figures/dataset_example.png" width="850">
+</p>
+
+Mask values
+
+| Pixel Value | Meaning |
+|------------:|---------|
+| 0 | Background |
+| 255 | Tumor |
 
 ---
 
 # Current Status
 
-## Project Stage
+| Step | Status |
+|------|--------|
+| Repository Created | ✅ |
+| Original U-Net Imported | ✅ |
+| Paper Studied | ✅ |
+| COCO Annotation Converted | ✅ |
+| Binary Masks Generated | ✅ |
+| Dataset Verified | ✅ |
+| Dataset Visualization | ✅ |
+| Ready for Training | ⏳ |
+| Baseline Model Training | ⏳ |
+| Evaluation | ⏳ |
 
-🟢 Dataset Prepared
+---
 
-Current progress
+# Project Goal
 
-- ✅ Repository created
-- ✅ Original U-Net repository imported
-- ✅ Brain Tumor dataset downloaded
-- ✅ COCO annotations converted into binary masks
-- ✅ Image–mask pairs verified
-- ✅ Dataset visualization completed
-- ⏳ Training preparation
-- ⏳ Model training
-- ⏳ Evaluation
-- ⏳ Hyperparameter experiments
+This repository is **not only an implementation of U-Net**.
+
+The objective is to understand every component of the original paper, reproduce the original implementation, perform systematic experiments, and document every result.
+
+The repository will include:
+
+- Paper explanation
+- Code explanation
+- Dataset preparation
+- Model training
+- Evaluation
+- Hyperparameter tuning
+- Architecture comparison
+- Experimental analysis
 
 ---
 
 # Dataset
 
-Dataset
+Dataset:
 
 **Brain Tumor Image Dataset – Semantic Segmentation**
 
-Task
+Task:
 
 Binary Semantic Segmentation
 
-Classes
+Dataset statistics
 
-- Background
-- Tumor
-
-Original dataset
-
-- 2146 MRI images
-- COCO segmentation annotations
-
-Current dataset structure
-
-```text
-brain_tumor_unet/
-
-    train/
-        imgs/
-        masks/
-
-    valid/
-        imgs/
-        masks/
-
-    test/
-        imgs/
-        masks/
-```
+| Split | Images |
+|-------:|-------:|
+| Train | 1503 |
+| Validation | 430 |
+| Test | 216 |
 
 Image size
 
 ```
 640 × 640
-```
-
-Mask values
-
-```
-0   Background
-
-255 Tumor
 ```
 
 ---
@@ -105,8 +104,8 @@ Mask values
 
 - Learning Rate
 - Batch Size
+- Number of Epochs
 - Weight Decay
-- Epochs
 - Momentum
 
 ## Optimizers
@@ -126,7 +125,8 @@ Mask values
 
 ## Evaluation Metrics
 
-- Dice
+- Dice Score
+- Dice Loss
 - IoU
 - Precision
 - Recall
@@ -134,9 +134,8 @@ Mask values
 - Accuracy
 - Confusion Matrix
 
-## Architectures
+## Architecture Improvements
 
-- Original U-Net
 - Attention U-Net
 - UNet++
 - ResUNet
@@ -147,7 +146,7 @@ Mask values
 
 # Repository Structure
 
-```text
+```
 paper/
 implementation/
 dataset/
@@ -158,25 +157,26 @@ figures/
 
 ---
 
-# Roadmap
+# Project Roadmap
 
-- [x] Study original paper
-- [x] Understand U-Net architecture
+- [x] Read the paper
+- [x] Understand the architecture
 - [x] Prepare dataset
-- [x] Convert COCO annotations
+- [x] Generate segmentation masks
+- [x] Verify dataset
 - [ ] Train baseline U-Net
 - [ ] Evaluate baseline
-- [ ] Hyperparameter tuning
-- [ ] Optimizer comparison
-- [ ] Loss function comparison
-- [ ] Architecture comparison
+- [ ] Hyperparameter optimization
+- [ ] Compare optimizers
+- [ ] Compare loss functions
+- [ ] Compare architectures
 
 ---
 
 # Acknowledgment
 
-This project started from the excellent open-source implementation:
+This project is based on the excellent open-source implementation:
 
 https://github.com/milesial/Pytorch-UNet
 
-The goal of this repository is educational and research-oriented. Throughout the project, the original implementation will be analyzed, modified, and gradually replaced while documenting every experiment and design decision.
+The purpose of this repository is educational and research-oriented. During this project, the original implementation will be carefully studied, progressively modified, and eventually replaced with my own implementation while documenting every experiment and design decision.
