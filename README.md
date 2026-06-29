@@ -4,18 +4,38 @@
 
 ---
 
+# U-Net Architecture
+
+<p align="center">
+  <img src="figures/unet_architecture.png" width="850">
+</p>
+
+**Original U-Net architecture proposed by Ronneberger et al. (MICCAI 2015).**
+
+The network consists of:
+
+- Contracting (Encoder) path
+- Bottleneck
+- Expanding (Decoder) path
+- Skip Connections
+- Pixel-wise segmentation output
+
+This repository explains every component of the architecture and reproduces the original implementation before performing systematic experiments and improvements.
+
+---
+
 # Current Status
 
 ## Project Stage
 
 🟢 Dataset Prepared
 
-Current progress:
+Current progress
 
 - ✅ Repository created
 - ✅ Original U-Net repository imported
 - ✅ Brain Tumor dataset downloaded
-- ✅ COCO annotations converted into binary segmentation masks
+- ✅ COCO annotations converted into binary masks
 - ✅ Image–mask pairs verified
 - ✅ Dataset visualization completed
 - ⏳ Training preparation
@@ -27,7 +47,7 @@ Current progress:
 
 # Dataset
 
-Dataset:
+Dataset
 
 **Brain Tumor Image Dataset – Semantic Segmentation**
 
@@ -40,16 +60,14 @@ Classes
 - Background
 - Tumor
 
-Original dataset contains
+Original dataset
 
 - 2146 MRI images
 - COCO segmentation annotations
 
-The annotations were converted into binary PNG masks using `pycocotools`.
-
 Current dataset structure
 
-```
+```text
 brain_tumor_unet/
 
     train/
@@ -74,120 +92,51 @@ Image size
 Mask values
 
 ```
-0 = Background
+0   Background
 
-255 = Tumor
+255 Tumor
 ```
-
----
-
-# Dataset Preparation Pipeline
-
-```
-COCO Dataset
-
-↓
-
-Read Annotation JSON
-
-↓
-
-Convert Polygon
-
-↓
-
-Binary Mask (.png)
-
-↓
-
-Verify Image–Mask Pairs
-
-↓
-
-Ready for U-Net Training
-```
-
----
-
-# Repository Goals
-
-This repository is **not only an implementation** of U-Net.
-
-The objective is to understand every component of the original paper and investigate how different design choices influence segmentation performance.
-
-The project includes
-
-- Understanding the original paper
-- Understanding every line of the PyTorch implementation
-- Reproducing the original training pipeline
-- Training on a medical dataset
-- Performing systematic experiments
-- Documenting all observations
 
 ---
 
 # Planned Experiments
 
-The following experiments will be performed.
-
-## Training Hyperparameters
+## Hyperparameters
 
 - Learning Rate
 - Batch Size
-- Number of Epochs
 - Weight Decay
+- Epochs
 - Momentum
-
----
 
 ## Optimizers
 
 - Adam
 - AdamW
-- RMSprop
 - SGD
-
----
+- RMSprop
 
 ## Loss Functions
 
 - Cross Entropy
 - Dice Loss
-- BCE + Dice Loss
+- BCE + Dice
 - Focal Loss
 - Tversky Loss
 
----
-
-## Data Augmentation
-
-- Horizontal Flip
-- Rotation
-- Random Crop
-- Brightness
-- Elastic Transformation
-
----
-
 ## Evaluation Metrics
 
-The trained model will be evaluated using
-
-- Dice Score
-- Dice Loss
-- IoU (Intersection over Union)
+- Dice
+- IoU
 - Precision
 - Recall
-- F1 Score
+- F1-score
 - Accuracy
 - Confusion Matrix
 
----
+## Architectures
 
-## Model Variants
-
-After reproducing the original U-Net, the following architectures will be investigated.
-
+- Original U-Net
 - Attention U-Net
 - UNet++
 - ResUNet
@@ -196,9 +145,9 @@ After reproducing the original U-Net, the following architectures will be invest
 
 ---
 
-# Current Repository Structure
+# Repository Structure
 
-```
+```text
 paper/
 implementation/
 dataset/
@@ -209,28 +158,25 @@ figures/
 
 ---
 
-# Project Roadmap
+# Roadmap
 
-- [x] Study original U-Net paper
-- [x] Understand repository structure
+- [x] Study original paper
+- [x] Understand U-Net architecture
+- [x] Prepare dataset
 - [x] Convert COCO annotations
-- [x] Verify dataset
-- [ ] Train original U-Net
-- [ ] Evaluate baseline performance
-- [ ] Compare hyperparameters
-- [ ] Compare optimizers
-- [ ] Compare loss functions
-- [ ] Compare model variants
-- [ ] Final benchmark
+- [ ] Train baseline U-Net
+- [ ] Evaluate baseline
+- [ ] Hyperparameter tuning
+- [ ] Optimizer comparison
+- [ ] Loss function comparison
+- [ ] Architecture comparison
 
 ---
 
 # Acknowledgment
 
-This project started from the open-source implementation:
+This project started from the excellent open-source implementation:
 
 https://github.com/milesial/Pytorch-UNet
 
-The purpose of this repository is educational and research-oriented.
-The implementation will gradually evolve through independent modifications,
-experiments, and reimplementation while documenting the complete learning process.
+The goal of this repository is educational and research-oriented. Throughout the project, the original implementation will be analyzed, modified, and gradually replaced while documenting every experiment and design decision.
