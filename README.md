@@ -10,7 +10,6 @@
   <img src="figures/unet_architecture.png" width="900">
 </p>
 
-The original U-Net architecture proposed by Ronneberger et al. (MICCAI 2015).
 
 ---
 
