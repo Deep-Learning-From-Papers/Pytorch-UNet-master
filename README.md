@@ -35,20 +35,7 @@ Mask values
 
 ---
 
-# Current Status
 
-| Step | Status |
-|------|--------|
-| Repository Created | ✅ |
-| Original U-Net Imported | ✅ |
-| Paper Studied | ✅ |
-| COCO Annotation Converted | ✅ |
-| Binary Masks Generated | ✅ |
-| Dataset Verified | ✅ |
-| Dataset Visualization | ✅ |
-| Ready for Training | ⏳ |
-| Baseline Model Training | ⏳ |
-| Evaluation | ⏳ |
 
 ---
 
