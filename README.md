@@ -143,20 +143,6 @@ figures/
 
 ---
 
-# Project Roadmap
-
-- [x] Read the paper
-- [x] Understand the architecture
-- [x] Prepare dataset
-- [x] Generate segmentation masks
-- [x] Verify dataset
-- [ ] Train baseline U-Net
-- [ ] Evaluate baseline
-- [ ] Hyperparameter optimization
-- [ ] Compare optimizers
-- [ ] Compare loss functions
-- [ ] Compare architectures
-
 ---
 
 # Acknowledgment
